@@ -7,8 +7,7 @@ items = []
 data.each do |array|
   array.each do |array_element|
     if /\d/.match(array_element)
-      price_as_string = array_element.strip.slice(1..).split(".")
-      price_in_pennies = (price_as_string[0].to_i * 100) + (price_as_string[1].to_i * 1)
+      price_in_pennies = array_element.strip.slice(1..).split(".").join.to_i
       prices_in_pennies << price_in_pennies
     else
       items << array_element
