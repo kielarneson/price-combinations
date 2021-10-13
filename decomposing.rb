@@ -15,12 +15,28 @@ data.each do |array|
   end
 end
 
-items_price = {}
+target_price = []
+menu_items_prices = []
 
 index = 0
 while index < items.length
-  items_price[items[index]] = prices_in_pennies[index]
+  if index == 0
+    target_price << items[index]
+    target_price << prices_in_pennies[index]
+  else
+    menu_items_prices << [items[index], prices_in_pennies[index]]
+  end
   index += 1
 end
 
-pp items_price
+pp menu_items_prices
+
+index = 0
+while index < menu_items_prices.length
+  if target_price[1] % menu_items_prices[index][1] == 0
+    p menu_items_prices[index]
+  else
+    p "Multiple orders of #{menu_items_prices[index][0]} does not equal the target price"
+  end
+  index += 1
+end
