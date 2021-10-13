@@ -66,3 +66,35 @@ def two_items(array)
 end
 
 two_items(menu_items_prices)
+
+def three_items(array)
+  index1 = 0
+  index2 = 0
+  index3 = 0
+  combos = []
+
+  while index1 < array.length
+    while index2 < array.length
+      while index3 < array.length
+        if array[index1][1] != array[index2][1] && array[index1][1] != array[index3][1] && array[index2][1] != array[index3][1] && array[index1][1] + array[index2][1] + array[index3][1] == 1505
+          combos << array[index1][1]
+          combos << array[index2][1]
+          combos << array[index3][1]
+        end
+        index3 += 1
+      end
+      index2 += 1
+      index3 = 0
+    end
+    index1 += 1
+    index2 = 0
+  end
+
+  if combos.any?
+    return combos
+  else
+    return "No combos"
+  end
+end
+
+p three_items(menu_items_prices)
